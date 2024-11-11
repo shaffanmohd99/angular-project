@@ -1,0 +1,19 @@
+<div class="overflow-x-auto">
+  <table class="table table-zebra w-full">
+    <thead>
+      <tr>
+        <th *ngFor="let col of getColumnsArray(); let i = index">
+          <div class="skeleton h-4 w-1/4"></div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Repeat the row for multiple loading states -->
+      <tr *ngFor="let row of getRowsArray(); let i = index">
+        <td *ngFor="let col of getColumnsArray(); let j = index">
+          <div class="skeleton h-4 w-full"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

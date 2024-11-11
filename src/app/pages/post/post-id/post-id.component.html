@@ -1,0 +1,74 @@
+<div
+  (click)="navigatePrevios()"
+  class="flex items-center gap-2 cursor-pointer py-4"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="feather feather-arrow-left"
+  >
+    <line x1="19" y1="12" x2="5" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
+  </svg>
+  <p class="text-lpt-2 text-center">Go back</p>
+</div>
+
+<!-- loading state -->
+<div *ngIf="isLoading; else postsTemplate">
+  <div class="skeleton h-8 w-[80%]"></div>
+  <div class="pt-8 flex flex-col gap-2">
+    <div class="skeleton h-4 w-full"></div>
+    <div class="skeleton h-4 w-full"></div>
+    <div class="skeleton h-4 w-1/2"></div>
+  </div>
+  <div class="skeleton h-6 w-20 mt-8 mb-4"></div>
+  <div class="flex flex-col">
+    <div class="pb-4 flex flex-col gap-2">
+      <div class="skeleton h-4 w-1/4"></div>
+      <div class="skeleton h-4 w-16"></div>
+      <div class="skeleton h-4 w-full"></div>
+    </div>
+    <div class="pb-4 flex flex-col gap-2">
+      <div class="skeleton h-4 w-1/4"></div>
+      <div class="skeleton h-4 w-16"></div>
+      <div class="skeleton h-4 w-full"></div>
+    </div>
+    <div class="pb-4 flex flex-col gap-2">
+      <div class="skeleton h-4 w-1/4"></div>
+      <div class="skeleton h-4 w-16"></div>
+      <div class="skeleton h-4 w-full"></div>
+    </div>
+  </div>
+</div>
+
+<!-- show post after loading  -->
+<ng-template #postsTemplate>
+  <h2 class="text-4xl pb-4 font-bold capitalize">{{ post.title }}</h2>
+  <p class="text-l">{{ post.body }}</p>
+  <h2 class="text-xl py-4 font-bold capitalize">Comments</h2>
+
+  <div class="flex flex-col gap-4">
+    <div
+      *ngFor="let item of comments"
+      class="card bg-base-100 w-full shadow-xl"
+    >
+      <div class="card-body">
+        <div class="card-actions justify-end"></div>
+        <div>
+          <div class="flex flex-col">
+            <p class="text-l font-semibold capitalize">{{ item.name }}</p>
+            <p class="text-sm text-slate-500">{{ item.email }}</p>
+          </div>
+          <p class="text-l pt-2">{{ item.body }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
