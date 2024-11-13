@@ -35,7 +35,11 @@
 
           <!-- Else block for items with no children -->
           <ng-template #noChildren>
-            <a>{{ item.label }}</a>
+            <a
+              [ngClass]="{ 'bg-slate-300': currentPath.includes(item.link) }"
+              [routerLink]="item.link"
+              >{{ item.label }}</a
+            >
           </ng-template>
         </li>
       </ul>

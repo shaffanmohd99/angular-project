@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule for NgFor and NgIf
-import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterLink,
+} from '@angular/router';
 import { filter } from 'rxjs';
 
 interface NavItem {
@@ -32,7 +37,7 @@ export class NavbarComponent {
     //     { label: 'Submenu 4', link: '/todo/4' },
     //   ],
     // },
-    { label: 'Todo', link: '/todo' },
+    // { label: 'Todo', link: '/todo' },
   ];
   ngOnInit(): void {
     // Set initial path
@@ -43,7 +48,6 @@ export class NavbarComponent {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.currentPath = event.url;
-        console.log('Current path:', this.currentPath);
       });
   }
 }
